@@ -1,0 +1,1043 @@
+dn: dc=alomrane,dc=ma
+objectClass: top
+objectClass: domain
+dc: alomrane
+
+dn: ou=users,dc=alomrane,dc=ma
+objectClass: top
+objectClass: organizationalUnit
+ou: users
+
+# ============================================================
+# DIRECTEUR GÉNÉRAL UNIQUE (CHEF_SERVICE)
+# ============================================================
+dn: uid=directeur.general,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: directeur.general
+cn: Général
+sn: DIRECTEUR
+mail: directeur.general@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A
+
+# ============================================================
+# LES TROIS PERSONNES DE LA DIRECTION GÉNÉRALE (EMPLOYE)
+# ============================================================
+dn: uid=rachida.bounaim,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: rachida.bounaim
+cn: Rachida
+sn: BOUNAIM
+mail: rachida.bounaim@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A
+
+dn: uid=ilham.ettoussi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: ilham.ettoussi
+cn: Ilham
+sn: ETTOUSSI
+mail: ilham.ettoussi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A
+
+dn: uid=abdellatif.zourze,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdellatif.zourze
+cn: Abdellatif
+sn: ZOURZE
+mail: abdellatif.zourze@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A
+
+# ============================================================
+# A01 - PARTENARIAT (CHEF_DIVISION)
+# ============================================================
+dn: uid=sana.noureddine,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: sana.noureddine
+cn: Sana
+sn: NOUREDDINE
+mail: sana.noureddine@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A01
+
+# ============================================================
+# A02 - DÉPARTEMENT JURIDIQUE
+# ============================================================
+dn: uid=abdellah.boussouab,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdellah.boussouab
+cn: Abdellah
+sn: BOUSSOUAB
+mail: abdellah.boussouab@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A02
+
+dn: uid=mohamed.fakir,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.fakir
+cn: Mohamed
+sn: FAKIR
+mail: mohamed.fakir@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A02
+
+dn: uid=hassan.kourri,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hassan.kourri
+cn: Hassan
+sn: KOURRI
+mail: hassan.kourri@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A02
+
+dn: uid=khalid.naitdaoud,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: khalid.naitdaoud
+cn: Khalid
+sn: NAIT DAOUD
+mail: khalid.naitdaoud@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A02
+
+# ============================================================
+# A03 - DIVISION QUALITÉ ET DD
+# ============================================================
+dn: uid=amina.methqal,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: amina.methqal
+cn: Amina
+sn: METHQAL
+mail: amina.methqal@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A03
+
+# ============================================================
+# A04 - DIVISION SI
+# ============================================================
+dn: uid=mohamed.aoutmani,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.aoutmani
+cn: Mohamed
+sn: AOUTMANI
+mail: mohamed.aoutmani@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A04
+
+dn: uid=abdelaaziz.bellout,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdelaaziz.bellout
+cn: Abdelaaziz
+sn: BELLOUT
+mail: abdelaaziz.bellout@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A04
+
+# ============================================================
+# A05 - AGENCE CENTRE
+# ============================================================
+dn: uid=majid.adnane,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: majid.adnane
+cn: Majid
+sn: ADNANE
+mail: majid.adnane@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05
+
+dn: uid=fatima.anas,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: fatima.anas
+cn: Fatima Ezzahra
+sn: ANAS
+mail: fatima.anas@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05
+
+# A05B - SAV
+dn: uid=lahoussine.bouqarbous,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: lahoussine.bouqarbous
+cn: Lahoussine
+sn: BOUQARBOUS
+mail: lahoussine.bouqarbous@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05B
+
+dn: uid=hicham.elmoussouli,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hicham.elmoussouli
+cn: Hicham
+sn: EL MOUSSOULI
+mail: hicham.elmoussouli@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05B
+
+# A05C - CP CENTRE
+dn: uid=said.akzabou,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: said.akzabou
+cn: Said
+sn: AKZABOU
+mail: said.akzabou@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05C
+
+dn: uid=hicham.boudrari,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hicham.boudrari
+cn: Hicham
+sn: BOUDRARI
+mail: hicham.boudrari@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05C
+
+dn: uid=hicham.moufid,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hicham.moufid
+cn: Hicham
+sn: MOUFID
+mail: hicham.moufid@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05C
+
+dn: uid=jamal.oubahou,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: jamal.oubahou
+cn: Jamal
+sn: OUBAHOU
+mail: jamal.oubahou@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05C
+
+dn: uid=yassine.smougui,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: yassine.smougui
+cn: Yassine
+sn: SMOUGUI
+mail: yassine.smougui@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05C
+
+# A05D - DC CENTRE
+dn: uid=mohamed.aarab,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.aarab
+cn: Mohamed
+sn: AARAB
+mail: mohamed.aarab@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05D
+
+dn: uid=hajar.benbrahim,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hajar.benbrahim
+cn: Hajar
+sn: BENBRAHIM
+mail: hajar.benbrahim@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05D
+
+dn: uid=najat.diker,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: najat.diker
+cn: Najat
+sn: DIKER
+mail: najat.diker@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05D
+
+dn: uid=myahmed.hachimi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: myahmed.hachimi
+cn: My Ahmed
+sn: HACHIMI
+mail: myahmed.hachimi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05D
+
+dn: uid=smahane.lahrimi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: smahane.lahrimi
+cn: Smahane
+sn: LAHRIMI
+mail: smahane.lahrimi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A05D
+
+# ============================================================
+# A06 - AGENCE PIÉMONTS
+# ============================================================
+dn: uid=adil.elhebil,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: adil.elhebil
+cn: Adil
+sn: EL HEBIL
+mail: adil.elhebil@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A06
+
+dn: uid=moulouda.lakrib,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: moulouda.lakrib
+cn: Moulouda
+sn: LAKRIB
+mail: moulouda.lakrib@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06
+
+# A06A - CP PIÉMONTS
+dn: uid=achraf.benichou,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: achraf.benichou
+cn: Achraf
+sn: BENICHOU
+mail: achraf.benichou@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06A
+
+dn: uid=hicham.kerbid,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hicham.kerbid
+cn: Hicham
+sn: KERBID
+mail: hicham.kerbid@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A06A
+
+dn: uid=aadi.segaoui,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: aadi.segaoui
+cn: Aadi
+sn: SEGAOUI
+mail: aadi.segaoui@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06A
+
+dn: uid=younesse.wahbi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: younesse.wahbi
+cn: Younesse
+sn: WAHBI
+mail: younesse.wahbi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06A
+
+# A06B - DC PIÉMONTS
+dn: uid=belkacem.benhaddou,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: belkacem.benhaddou
+cn: Belkacem
+sn: BENHADDOU
+mail: belkacem.benhaddou@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06B
+
+dn: uid=saad.elazzouzi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: saad.elazzouzi
+cn: Saad
+sn: EL AZZOUZI
+mail: saad.elazzouzi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06B
+
+dn: uid=redounae.kansi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: redounae.kansi
+cn: Redounae
+sn: KANSI
+mail: redounae.kansi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06B
+
+dn: uid=ghizlane.mazih,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: ghizlane.mazih
+cn: Ghizlane
+sn: MAZIH
+mail: ghizlane.mazih@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06B
+
+dn: uid=karim.sabrou,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: karim.sabrou
+cn: Karim
+sn: SABROU
+mail: karim.sabrou@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A06B
+
+# ============================================================
+# A07 - AGENCE INEZGANE
+# ============================================================
+dn: uid=mohamed.amcassou,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.amcassou
+cn: Mohamed
+sn: AMCASSOU
+mail: mohamed.amcassou@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A07
+
+# A07A - CP INEZGANE
+dn: uid=abdellah.idkourram,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdellah.idkourram
+cn: Abdellah
+sn: ID KOURRAM
+mail: abdellah.idkourram@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A07A
+
+dn: uid=abdelaziz.idsalem,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdelaziz.idsalem
+cn: Abdelaziz
+sn: ID SALEM
+mail: abdelaziz.idsalem@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A07A
+
+# A07B - DC INEZGANE
+dn: uid=jamila.aourik,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: jamila.aourik
+cn: Jamila
+sn: AOURIK
+mail: jamila.aourik@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A07B
+
+dn: uid=fayssal.bourhim,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: fayssal.bourhim
+cn: Fayssal
+sn: BOURHIM
+mail: fayssal.bourhim@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A07B
+
+# ============================================================
+# A08 - AGENCE TIZNIT
+# ============================================================
+dn: uid=mohamed.agourram,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.agourram
+cn: Mohamed
+sn: AGOURRAM
+mail: mohamed.agourram@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: A08
+
+dn: uid=ahmedamine.najab,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: ahmedamine.najab
+cn: Ahmed Amine
+sn: NAJAB
+mail: ahmedamine.najab@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A08
+
+dn: uid=ayoub.zakrani,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: ayoub.zakrani
+cn: Ayoub
+sn: ZAKRANI
+mail: ayoub.zakrani@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A08
+
+# ============================================================
+# A10 - AGENCE TAROUDANT - TATA
+# ============================================================
+dn: uid=mohamed.aitbella,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.aitbella
+cn: Mohamed
+sn: AIT BELLA
+mail: mohamed.aitbella@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A10A   # rattaché à A10A
+
+# A10A - CP TAROUDANT/TATA
+dn: uid=rachid.chaibati,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: rachid.chaibati
+cn: Rachid
+sn: CHAIBATI
+mail: rachid.chaibati@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A10A
+
+dn: uid=oualid.icame,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: oualid.icame
+cn: Oualid
+sn: ICAME
+mail: oualid.icame@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A10A
+
+dn: uid=abdelkarim.naitraiss,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdelkarim.naitraiss
+cn: Abdelkarim
+sn: NAIT RAISS
+mail: abdelkarim.naitraiss@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A10A
+
+dn: uid=hamza.rjimati,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hamza.rjimati
+cn: Hamza
+sn: RJIMATI
+mail: hamza.rjimati@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A10A
+
+# A10B - DC TAROUDANT/TATA
+dn: uid=nabil.soujaa,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: nabil.soujaa
+cn: Nabil
+sn: SOUJAA
+mail: nabil.soujaa@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: A10B
+
+# ============================================================
+# AA - DIR TECHNIQUE INGÉNIERIE
+# ============================================================
+dn: uid=abdelhakim.abouelabbes,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdelhakim.abouelabbes
+cn: Abdelhakim
+sn: ABOU EL ABBES
+mail: abdelhakim.abouelabbes@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: AA
+
+# AAA - DÉP CONCEPTION DÉVELOP
+dn: uid=larbi.dardour,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: larbi.dardour
+cn: Larbi
+sn: DARDOUR
+mail: larbi.dardour@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: AAA
+
+# AAA01 - DIV DÉVELOP ET FONCIÈR
+dn: uid=abdellah.aderraz,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdellah.aderraz
+cn: Abdellah
+sn: ADERRAZ
+mail: abdellah.aderraz@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAA01
+
+dn: uid=brahim.boumessaoud,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: brahim.boumessaoud
+cn: Brahim
+sn: BOUMESSAOUD
+mail: brahim.boumessaoud@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAA01
+
+dn: uid=lahoussaine.bouni,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: lahoussaine.bouni
+cn: Lahoussaine
+sn: BOUNI
+mail: lahoussaine.bouni@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAA01
+
+# AAA02 - DIV ETUDES PROGRAMMATIO
+dn: uid=yacine.azzam,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: yacine.azzam
+cn: Yacine
+sn: AZZAM
+mail: yacine.azzam@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAA02
+
+dn: uid=mounia.boussbaa,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mounia.boussbaa
+cn: Mounia
+sn: BOUSSBAA
+mail: mounia.boussbaa@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: AAA02
+
+dn: uid=mina.chbani,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mina.chbani
+cn: Mina
+sn: CHBANI
+mail: mina.chbani@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAA02
+
+# AAB - DÉP RÉALISATIONS
+dn: uid=houda.anas,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: houda.anas
+cn: Houda
+sn: ANAS
+mail: houda.anas@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAB
+
+# AAB01 - DIV DES MARCHÉS
+dn: uid=ennine.amriss,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: ennine.amriss
+cn: Ennine
+sn: AMRISS
+mail: ennine.amriss@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAB01
+
+dn: uid=zineb.boujaha,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: zineb.boujaha
+cn: Zineb
+sn: BOUJAHA
+mail: zineb.boujaha@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAB01
+
+dn: uid=mouna.elalaoui,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mouna.elalaoui
+cn: Mouna
+sn: EL ALAOUI
+mail: mouna.elalaoui@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAB01
+
+dn: uid=hanan.zanane,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hanan.zanane
+cn: Hanan
+sn: ZANANE
+mail: hanan.zanane@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AAB01
+
+# AAB02 - DIV SUIVI CONTROL RÉALI
+dn: uid=khadija.bairi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: khadija.bairi
+cn: Khadija
+sn: BAIRI
+mail: khadija.bairi@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: AAB02
+
+# ============================================================
+# AB - DIR COMMERCIALE MARKETING
+# ============================================================
+# Dép Marketing Communicat (ABA) - employé direct
+dn: uid=khadija.brakez,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: khadija.brakez
+cn: Khadija
+sn: BRAKEZ
+mail: khadija.brakez@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABA
+
+# ABA01 - DIV ETUDES MARKETING
+dn: uid=mehdi.zeroual,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mehdi.zeroual
+cn: Mehdi
+sn: ZEROUAL
+mail: mehdi.zeroual@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: ABA01
+
+# ABA02 - DIV COMMUNICATION OPÉRA
+dn: uid=yassine.elmtougui,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: yassine.elmtougui
+cn: Yassine
+sn: EL MTOUGUI
+mail: yassine.elmtougui@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABA02
+
+dn: uid=rhizlane.nafisse,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: rhizlane.nafisse
+cn: Rhizlane
+sn: NAFISSE
+mail: rhizlane.nafisse@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABA02
+
+# ABB - DÉP ANIMATION RÉSEAU
+dn: uid=mimoun.drissisaidi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mimoun.drissisaidi
+cn: Mimoun
+sn: DRISSI SAIDI
+mail: mimoun.drissisaidi@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: ABB
+
+dn: uid=ismail.ibahrine,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: ismail.ibahrine
+cn: Ismail
+sn: IBAHRINE
+mail: ismail.ibahrine@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABB
+
+# ABB01 - DIV ADMINISTRATION VENT
+dn: uid=amina.aarab,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: amina.aarab
+cn: Amina
+sn: AARAB
+mail: amina.aarab@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABB01
+
+dn: uid=mohamed.ahantat,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohamed.ahantat
+cn: Mohamed
+sn: AHANTAT
+mail: mohamed.ahantat@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABB01
+
+dn: uid=abdellah.boutbib,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdellah.boutbib
+cn: Abdellah
+sn: BOUTBIB
+mail: abdellah.boutbib@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ABB01
+
+# ABB02 - DIV RECOUVREMENT DÉSTOC
+dn: uid=soundous.lemgadar,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: soundous.lemgadar
+cn: Soundous
+sn: LEMGADAR
+mail: soundous.lemgadar@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: ABB02
+
+# ============================================================
+# AC - DIR ORGANISATION C HUMAIN
+# ============================================================
+dn: uid=mohammed.bourais,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: mohammed.bourais
+cn: Mohammed
+sn: BOURAIS
+mail: mohammed.bourais@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AC
+
+# ACB - DÉP LOGISTIQUE MOYENS GÉ
+dn: uid=elmehdi.aarab,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: elmehdi.aarab
+cn: El Mehdi
+sn: AARAB
+mail: elmehdi.aarab@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=abderrahmane.arouah,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abderrahmane.arouah
+cn: Abderrahmane
+sn: AROUAH
+mail: abderrahmane.arouah@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=lahcen.assikour,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: lahcen.assikour
+cn: Lahcen
+sn: ASSIKOUR
+mail: lahcen.assikour@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=nour-eddine.briguem,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: nour-eddine.briguem
+cn: Nour-Eddine
+sn: BRIGUEM
+mail: nour-eddine.briguem@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=abdellah.elghouchmi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abdellah.elghouchmi
+cn: Abdellah
+sn: EL GHOUCHMI
+mail: abdellah.elghouchmi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=lahcen.ibihi,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: lahcen.ibihi
+cn: Lahcen
+sn: IBIHI
+mail: lahcen.ibihi@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=lhoucin.larabas,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: lhoucin.larabas
+cn: Lhoucin
+sn: LARABAS
+mail: lhoucin.larabas@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+dn: uid=aomar.rajafallah,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: aomar.rajafallah
+cn: Aomar
+sn: RAJAFALLAH
+mail: aomar.rajafallah@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ACB
+
+# ============================================================
+# AD - DIR FINANCIÈRE CONTROL GE
+# ============================================================
+dn: uid=tarik.filali-belhaj,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: tarik.filali-belhaj
+cn: Tarik
+sn: FILALI-BELHAJ
+mail: tarik.filali-belhaj@alomrane.ma
+userPassword: 123456
+employeeType: CHEF_SERVICE
+departmentNumber: AD
+
+dn: uid=elmostafa.maaira,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: elmostafa.maaira
+cn: El Mostafa
+sn: MAAIRA
+mail: elmostafa.maaira@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: AD
+
+# ADA - DÉP FINANCE COMPTABILITÉ
+dn: uid=abd.amerouy,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: abd.amerouy
+cn: Abd
+sn: AMEROUY
+mail: abd.amerouy@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADA
+
+# ADA01 - DIV FINANCE TRÉSORERIE
+dn: uid=hafida.elghazouani,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: hafida.elghazouani
+cn: Hafida
+sn: EL GHAZOUANI
+mail: hafida.elghazouani@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADA01
+
+dn: uid=maryem.kassaiaa,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: maryem.kassaiaa
+cn: Maryem
+sn: KASSAIAA
+mail: maryem.kassaiaa@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADA01
+
+dn: uid=kamal.mejjout,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: kamal.mejjout
+cn: Kamal
+sn: MEJJOUT
+mail: kamal.mejjout@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADA01
+
+# ADA02 - DIV COMPTABILITÉ FISCA
+dn: uid=khadija.sabour,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: khadija.sabour
+cn: Khadija
+sn: SABOUR
+mail: khadija.sabour@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADA02
+
+# ADB - DÉP CONTRÔLE GESTION
+dn: uid=lamiae.cherif,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: lamiae.cherif
+cn: Lamiae
+sn: CHERIF
+mail: lamiae.cherif@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADB
+
+dn: uid=sara.ksiks,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: sara.ksiks
+cn: Sara
+sn: KSIKS
+mail: sara.ksiks@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADB
+
+dn: uid=najat.zioual,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: najat.zioual
+cn: Najat
+sn: ZIOUAL
+mail: najat.zioual@alomrane.ma
+userPassword: 123456
+employeeType: EMPLOYE
+departmentNumber: ADB
+
+# ============================================================
+# COMPTES SPÉCIAUX TRANSVERSES
+# ============================================================
+dn: uid=admin,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: admin
+cn: Système
+sn: ADMIN
+mail: admin@alomrane.ma
+userPassword: 123456
+employeeType: ADMIN_SI
+departmentNumber: A04
+
+dn: uid=responsable.logistique,ou=users,dc=alomrane,dc=ma
+objectClass: inetOrgPerson
+uid: responsable.logistique
+cn: Responsable
+sn: LOGISTIQUE
+mail: responsable.logistique@alomrane.ma
+userPassword: 123456
+employeeType: RESPONSABLE_LOGISTIQUE
+departmentNumber: ACB

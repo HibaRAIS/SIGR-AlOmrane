@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8af7dc48-0191-4d2e-8375-19af828051d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/config/AuthenticationSuccessListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/config/LdapConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/config/SecurityUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/AuditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/CategorieController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/CommandeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/EmployeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/InventaireController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/NotificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/PretController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/ProduitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/ReceptionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/ResponsableLogistiqueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/controller/TicketSupportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/request/AjusterDemandeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/request/AnnoterDemandeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/request/CreerTicketRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/request/ProfilUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/request/RechercheTicketRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/response/BonSortieResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/response/CategorieResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/response/NotificationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/response/ProfilResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/dto/response/TicketResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/exception/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/BilanOuverture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/BonCommande.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/BonReception.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/BonSortie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/BudgetAnnuel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/Categorie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/Devise.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/ExerciceComptable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/FicheTechnique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/Fournisseur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/JournalMouvement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LigneCommande.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LigneInventaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LigneMouvement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LignePret.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LigneReception.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LigneRetour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/LigneSortie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/MarchePublic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/PretMateriel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/RetourMateriel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/SessionInventaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/StockPhysique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/Tarification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/TicketSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/Tva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/Grade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/PrioriteDemande.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/PrioriteTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/RoleUtilisateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutBudget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutCommande.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutDemande.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutExercice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutInventaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutPret.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutReception.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutSortie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/StatutTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/TypeMouvement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/TypeNotification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/model/enums/TypeStructure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/repository/BonSortieRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/repository/CategorieRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/repository/LigneSortieRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/repository/NotificationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/repository/StockPhysiqueRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/repository/TicketSupportRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/service/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/service/SortieService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sigr/src/main/java/com/alomrane/sigr/service/TicketSupportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sigr.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/GenerateHash.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/SigrApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/config/JwtAuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/config/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/controller/ChefServiceController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/controller/DemandeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/dto/CreerDemandeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/dto/DemandeResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/dto/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/dto/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/dto/RejeterDemandeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/model/DemandeInterne.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/model/Employe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/model/LigneDemande.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/model/Produit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/model/Structure.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/model/Utilisateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/repository/DemandeInterneRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/repository/EmployeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/repository/LigneDemandeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/repository/ProduitRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/repository/StructureRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/repository/UtilisateurRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/java/com/alomrane/sigr/service/DemandeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/main/resources/users.ldif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sigr/src/test/java/com/alomrane/sigr/SigrApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3C7WlaN9Haqz9WA3PBWwFmV1Pt9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.SigrApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\PC\\AppData\\Roaming\\JetBrains\\IdeaIC2025.1\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend-springboot&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8af7dc48-0191-4d2e-8375-19af828051d6" name="Changes" comment="" />
+      <created>1775737240568</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775737240568</updated>
+    </task>
+    <servers />
+  </component>
+</project>
