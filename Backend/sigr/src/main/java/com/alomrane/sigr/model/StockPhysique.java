@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 @Entity
@@ -25,6 +26,7 @@ public class StockPhysique {
     private BigDecimal cumulEntree;
     private BigDecimal cumulSortie;
     private LocalDate dateDerniereSortie;
+    private LocalDate dateDerniereEntree;
     private BigDecimal pmpActuel;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -52,16 +54,19 @@ public class StockPhysique {
     }
 
     public void recalculerPMP(BigDecimal qte, BigDecimal prix) {
-        if (qte == null || prix == null) return;
-        BigDecimal ancienneValeur = this.quantiteTheorique.subtract(qte).multiply(this.pmpActuel);
-        BigDecimal nouvelleValeur = qte.multiply(prix);
-        BigDecimal nouvelleQuantite = this.quantiteTheorique;
-        if (nouvelleQuantite.compareTo(BigDecimal.ZERO) > 0) {
-            this.pmpActuel = ancienneValeur.add(nouvelleValeur)
-                    .divide(nouvelleQuantite, 2, java.math.RoundingMode.HALF_UP);
+        if (qte == null || prix == null || pmpActuel == null) return;
+        BigDecimal stockAvant = this.quantiteTheorique; // stock avant l’entrée
+        BigDecimal valeurStockAvant = stockAvant.multiply(this.pmpActuel);
+        BigDecimal valeurEntree = qte.multiply(prix);
+        BigDecimal nouveauStock = stockAvant.add(qte);
+
+        if (nouveauStock.compareTo(BigDecimal.ZERO) > 0) {
+            this.pmpActuel = valeurStockAvant.add(valeurEntree)
+                    .divide(nouveauStock, 6, RoundingMode.HALF_UP); // précision 6 pour éviter les pertes
         } else {
             this.pmpActuel = BigDecimal.ZERO;
         }
+        // La quantité théorique est mise à jour par le service après cet appel
     }
 
     // ==================== Égalité / Hachage ====================

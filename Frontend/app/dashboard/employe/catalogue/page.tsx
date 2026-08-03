@@ -64,8 +64,11 @@ import {
   Shield,
 } from "lucide-react";
 import { toast } from "sonner";
-import { produitService, Produit } from "@/services/produit.service";
-import { categorieService, CategorieArborescence } from "@/services/categorie.service";
+import { produitService } from "@/services/produit.service";
+import { Produit } from "@/types/produit";
+import { categorieService} from "@/services/categorie.service";
+import {  CategorieArborescence } from "@/types/categorie";
+import { getImageUrl } from "@/lib/utils";   // ← AJOUT pour résoudre les images
 
 // ============================================================
 //                   ICÔNES ET COULEURS
@@ -482,7 +485,7 @@ export default function CataloguePage() {
                       >
                         {product.imageUrl ? (
                           <img
-                            src={product.imageUrl}
+                            src={getImageUrl(product.imageUrl)}
                             alt={product.designation}
                             className="w-full h-full object-cover"
                             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -549,7 +552,12 @@ export default function CataloguePage() {
                           onClick={() => openProductDetails(product)}
                         >
                           {product.imageUrl ? (
-                            <img src={product.imageUrl} alt={product.designation} className="w-full h-full object-cover" />
+                            <img
+                              src={getImageUrl(product.imageUrl)}
+                              alt={product.designation}
+                              className="w-full h-full object-cover"
+                              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                            />
                           ) : (
                             <Package className="w-8 h-8 text-muted-foreground/50" />
                           )}
@@ -621,7 +629,12 @@ export default function CataloguePage() {
                 {/* Image */}
                 <div className="aspect-video bg-gradient-to-br from-muted to-muted/50 rounded-xl flex items-center justify-center overflow-hidden">
                   {selectedProduct.imageUrl ? (
-                    <img src={selectedProduct.imageUrl} alt={selectedProduct.designation} className="w-full h-full object-cover" />
+                    <img
+                      src={getImageUrl(selectedProduct.imageUrl)}
+                      alt={selectedProduct.designation}
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
                   ) : (
                     <Package className="w-16 h-16 text-muted-foreground/50" />
                   )}

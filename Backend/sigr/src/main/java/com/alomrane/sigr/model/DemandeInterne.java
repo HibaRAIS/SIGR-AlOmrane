@@ -50,6 +50,13 @@ public class DemandeInterne {
 
     private String annotation;
 
+    @Lob
+    private String signaturesJson;
+
+    @Lob
+    private String scanAccuseDataUrl;
+
+
     @OneToMany(mappedBy = "demande", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     @ToString.Exclude
@@ -76,4 +83,9 @@ public class DemandeInterne {
     public void marquerLivree() {
         this.statut = StatutDemande.LIVREE;
     }
+
+    @OneToMany(mappedBy = "demande", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    @ToString.Exclude
+    private List<BonSortie> bonsSortie = new ArrayList<>();
 }

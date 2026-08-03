@@ -3,7 +3,11 @@ package com.alomrane.sigr.model;
 import jakarta.persistence.*;
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,18 +24,24 @@ public class Produit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String codeArticle;
     private String designation;
     private String description;
     private String uniteMesure;
     private String rayonEmplacement;
-    private String nomenclatureDouane;
     private Boolean estConsignable;
-    private Boolean estTaxable;
     private BigDecimal quantiteMin;
-    private BigDecimal quantiteMax;
-    private BigDecimal quantiteACommander;
     private String imageUrl;
+    // Nouveau champ pour le nom du fournisseur
+    private String fournisseurNom;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @OneToOne(mappedBy = "produit", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @ToString.Exclude
@@ -42,10 +52,6 @@ public class Produit {
     @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 
-    @OneToMany(mappedBy = "produit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Builder.Default
-    @ToString.Exclude
-    private List<Tarification> tarifications = new ArrayList<>();
 
     @OneToOne(mappedBy = "produit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude

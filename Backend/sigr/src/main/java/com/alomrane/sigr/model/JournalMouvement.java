@@ -27,8 +27,14 @@ public class JournalMouvement {
 
     private String referenceDocument;
 
+    @Column(unique = true, nullable = false, length = 20)
+    private String codeUnique;
+
     @Column(unique = true, updatable = false)
     private String hashChaine;
+
+    @Column(length = 64)
+    private String previousHash;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "utilisateur_id")

@@ -9,6 +9,7 @@ import com.alomrane.sigr.exception.BusinessException;
 import com.alomrane.sigr.exception.ResourceNotFoundException;
 import com.alomrane.sigr.model.*;
 import com.alomrane.sigr.model.enums.PrioriteDemande;
+import com.alomrane.sigr.model.enums.RoleUtilisateur;
 import com.alomrane.sigr.model.enums.StatutDemande;
 import com.alomrane.sigr.repository.*;
 import jakarta.transaction.Transactional;
@@ -209,6 +210,26 @@ public class DemandeService {
             });
         } catch (Exception e) {
             log.error("Erreur lors de l'envoi de la notification", e);
+        }
+
+        // ----- NOTIFICATION AUX RESPONSABLES LOGISTIQUES -----
+        try {
+            List<Utilisateur> responsables = utilisateurRepo.findByRole(RoleUtilisateur.RESPONSABLE_LOGISTIQUE);
+            log.info("Nombre de responsables trouvés : {}", responsables.size());
+            for (Utilisateur resp : responsables) {
+                notificationService.envoyerNotification(
+                        resp,
+                        Notification.TypeNotification.INFO,
+                        "Nouvelle demande à préparer",
+                        "La demande " + saved.getNumeroDemande() + " de " +
+                                saved.getEmploye().getPrenom() + " " + saved.getEmploye().getNom() +
+                                " a été validée et doit être préparée.",
+                        "Département : " + saved.getEmploye().getStructure().getNom(),
+                        "/responsable/sorties"   // lien vers la page des sorties
+                );
+            }
+        } catch (Exception e) {
+            log.error("Erreur lors de l'envoi des notifications aux responsables logistiques", e);
         }
 
 

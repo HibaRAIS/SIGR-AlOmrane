@@ -8,5 +8,5 @@ public enum Grade {
     COORDINATEUR,
     DELEGUE_COMMERCIAL,
     SECRETAIRE,
-    AUCUN  // Correspond aux '0' ou vides dans le PDF
+    AUCUN
 }

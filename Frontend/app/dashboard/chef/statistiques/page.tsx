@@ -12,7 +12,8 @@ import {
   FileSpreadsheet, FileText, File
 } from "lucide-react";
 import { toast } from "sonner";
-import { demandeService, DemandeResponse } from "@/services/demande.service";
+import { demandeService } from "@/services/demande.service";
+import { DemandeResponse } from "@/types/demande";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";

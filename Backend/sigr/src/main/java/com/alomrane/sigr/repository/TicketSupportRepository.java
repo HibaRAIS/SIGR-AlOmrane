@@ -19,4 +19,7 @@ public interface TicketSupportRepository extends JpaRepository<TicketSupport, Lo
     @Modifying
     @Query("UPDATE TicketSupport t SET t.reponse = :reponse WHERE t.id = :id")
     int updateReponseOnly(@Param("id") Long id, @Param("reponse") String reponse);
+
+    //chat
+    long countByStatut(String statut);
 }

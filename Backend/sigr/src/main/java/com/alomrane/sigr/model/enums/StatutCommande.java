@@ -1,2 +1,7 @@
 package com.alomrane.sigr.model.enums;
-public enum StatutCommande { EN_ATTENTE, RECU_PARTIEL, SOLDE, ANNULE }
+
+public enum StatutCommande {
+    EN_COURS,
+    RECUE,
+    ANNULEE
+}

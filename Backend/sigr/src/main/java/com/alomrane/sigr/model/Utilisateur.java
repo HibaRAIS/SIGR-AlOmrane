@@ -3,6 +3,8 @@ package com.alomrane.sigr.model;
 import com.alomrane.sigr.model.enums.RoleUtilisateur;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,4 +33,9 @@ public class Utilisateur {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employe_id", unique = true)
     private Employe employe;
+
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 }

@@ -1,8 +1,10 @@
 'use client';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import {
   LayoutDashboard,
@@ -14,7 +16,9 @@ import {
   Settings,
   Activity,
   LogOut,
-  MessageSquare, 
+  MessageSquare,
+  UserCog,
+  Bot,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { LogoutConfirmDialog } from './LogoutConfirmDialog';
@@ -22,16 +26,22 @@ import { LogoutConfirmDialog } from './LogoutConfirmDialog';
 const navigation = [
   { name: 'Tableau de bord', href: '/dashboard/admin', icon: LayoutDashboard },
   { name: 'Utilisateurs & IAM', href: '/dashboard/admin/users', icon: Users },
+    {
+    name: "Gestion Employés",
+    href: "/dashboard/admin/employees",
+    icon: UserCog,
+  },
   { name: 'Rôles & permissions', href: '/dashboard/admin/roles', icon: Shield },
-  { name: 'Structures', href: '/dashboard/admin/structures', icon: Building2 },
+  { name: 'Structures', href: '/dashboard/admin/organization', icon: Building2 },
   { name: 'Support IT', href: '/dashboard/admin/support', icon: MessageSquare },
-  { name: 'Exercices comptables', href: '/dashboard/admin/exercices', icon: FileText },
-  { name: 'Audit trail', href: '/dashboard/admin/audit', icon: BarChart3 },
-  { name: 'Paramétrage', href: '/dashboard/admin/settings', icon: Settings },
-  { name: 'Logs système', href: '/dashboard/admin/logs', icon: Activity },
+
 ];
 
-export default function SidebarAdmin() {
+interface SidebarAdminProps {
+  className?: string;
+}
+
+export default function SidebarAdmin({ className }: SidebarAdminProps) {
   const pathname = usePathname();
   const { logout } = useAuth();
   const router = useRouter();
@@ -45,12 +55,26 @@ export default function SidebarAdmin() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-50 w-72 bg-[#1D6F42] text-white flex flex-col">
-        <div className="p-6 border-b border-white/10">
-          <h1 className="text-xl font-bold">AL OMRANE</h1>
-          <p className="text-sm text-white/70">SIGR - Administrateur SI</p>
+      <aside className={cn("fixed inset-y-0 left-0 z-50 w-72 bg-[#1D6F42] text-white flex flex-col", className)}>
+        {/* En-tête avec logo */}
+        <div className="p-6 border-b border-white/10 flex items-center gap-3">
+          <div className="relative h-10 w-10 bg-white rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src="/images/alomrane-logo.png"
+              alt="Al Omrane Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold">AL OMRANE</h1>
+            <p className="text-sm text-white/70">SIGR - Administrateur SI</p>
+          </div>
         </div>
-        <nav className="flex-1 p-4 space-y-1">
+
+        {/* Navigation avec scrollbar invisible */}
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto custom-scrollbar">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -67,6 +91,7 @@ export default function SidebarAdmin() {
             </Link>
           ))}
         </nav>
+
         <div className="p-4 border-t border-white/10">
           <button
             onClick={() => setDialogOpen(true)}
@@ -77,6 +102,18 @@ export default function SidebarAdmin() {
           </button>
         </div>
       </aside>
+
+      {/* Styles pour masquer la scrollbar */}
+      <style jsx global>{`
+        .custom-scrollbar {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE/Edge */
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          display: none; /* Chrome/Safari/Opera */
+        }
+      `}</style>
+
       <LogoutConfirmDialog
         open={dialogOpen}
         onOpenChange={setDialogOpen}

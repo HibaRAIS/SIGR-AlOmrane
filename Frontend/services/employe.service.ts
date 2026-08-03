@@ -1,36 +1,26 @@
 // services/employe.service.ts
 import apiClient from '@/lib/api';
+import type { EmployeDto, CreateEmployeRequest } from '@/types/employe';
 
-export interface ProfilResponse {
-  prenom: string;
-  nom: string;
-  email: string;
-  telephone: string;
-  service: string;
-  site: string;       
-  matricule: string;
-  responsable: string;
-  niveauAcces: string;
-  badge: string;
-  derniereConnexion: string;
-}
+const ENDPOINT = '/employes';
 
 export const employeService = {
-  getProfil: async (): Promise<ProfilResponse> => {
-    try {
-      const { data } = await apiClient.get('/employes/profil');
-      return data;
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Erreur lors du chargement du profil";
-      throw new Error(message);
-    }
+  getAll: async (): Promise<EmployeDto[]> => {
+    const { data } = await apiClient.get(ENDPOINT);
+    return data;
   },
-  updateTelephone: async (telephone: string): Promise<void> => {
-    try {
-      await apiClient.put('/employes/profil/telephone', { telephone });
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Erreur lors de la mise à jour";
-      throw new Error(message);
-    }
+  create: async (request: CreateEmployeRequest): Promise<EmployeDto> => {
+    const { data } = await apiClient.post(ENDPOINT, request);
+    return data;
+  },
+  update: async (id: number, request: CreateEmployeRequest): Promise<EmployeDto> => {
+    const { data } = await apiClient.put(`${ENDPOINT}/${id}`, request);
+    return data;
+  },
+  delete: async (id: number): Promise<void> => {
+    await apiClient.delete(`${ENDPOINT}/${id}`);
+  },
+  updateStatus: async (id: number, actif: boolean): Promise<void> => {
+    await apiClient.put(`${ENDPOINT}/${id}/status?actif=${actif}`);
   },
 };

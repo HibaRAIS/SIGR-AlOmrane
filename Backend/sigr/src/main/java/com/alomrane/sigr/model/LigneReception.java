@@ -1,8 +1,7 @@
-// LigneReception.java
 package com.alomrane.sigr.model;
 
-import jakarta.persistence.*;
 import lombok.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -17,32 +16,60 @@ public class LigneReception {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal quantiteRecue;
-    private BigDecimal prixAchatEffectifHT;
-    private BigDecimal fraisApproche;
-    private BigDecimal tauxTvaApplique;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bon_reception_id")
-    private BonReception bonReception;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ligne_commande_id")
-    private LigneCommande ligneCommande;
+    @JoinColumn(name = "reception_id", nullable = false)
+    private Reception reception;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produit_id")
     private Produit produit;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tva_id")
-    private Tva tva;
+    @Column(name = "code_article", length = 50)
+    private String codeArticle;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "devise_id")
-    private Devise devise;
+    @Column(nullable = false)
+    private String designation;
 
-    public BigDecimal calculerPrixRevient() {
-        return prixAchatEffectifHT.add(fraisApproche);
+    @Column(name = "quantite_commandee", nullable = false)
+    private Integer quantiteCommandee;
+
+    @Column(name = "quantite_recue", nullable = false)
+    private Integer quantiteRecue;
+
+    @Column(name = "prix_unitaire_ht", precision = 12, scale = 2)
+    private BigDecimal prixUnitaireHT;
+
+    @Column(precision = 5, scale = 2)
+    private BigDecimal tva;
+
+    @Column(name = "total_ht", precision = 12, scale = 2)
+    private BigDecimal totalHT;
+
+    @Column(name = "total_ttc", precision = 12, scale = 2)
+    private BigDecimal totalTTC;
+
+    @Column(name = "pmp_avant", precision = 12, scale = 2)
+    private BigDecimal pmpAvant;
+
+    @Column(name = "pmp_apres", precision = 12, scale = 2)
+    private BigDecimal pmpApres;
+
+    @Column(name = "stock_avant", precision = 12, scale = 2)
+    private BigDecimal stockAvant;
+
+    @Column(name = "stock_apres", precision = 12, scale = 2)
+    private BigDecimal stockApres;
+
+    public void calculerTotaux() {
+        BigDecimal qte = BigDecimal.valueOf(quantiteRecue);
+        this.totalHT = prixUnitaireHT.multiply(qte);
+        BigDecimal taux = tva.divide(BigDecimal.valueOf(100), 4, java.math.RoundingMode.HALF_UP);
+        this.totalTTC = totalHT.multiply(BigDecimal.ONE.add(taux));
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void beforeSave() {
+        calculerTotaux();
     }
 }

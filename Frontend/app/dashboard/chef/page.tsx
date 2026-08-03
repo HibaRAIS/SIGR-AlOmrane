@@ -8,8 +8,8 @@ import {
   Package, Users, FileText, ArrowRight, Activity, Loader2
 } from "lucide-react";
 import { toast } from "sonner";
-import { demandeService, DemandeResponse } from "@/services/demande.service";
-
+import { demandeService } from "@/services/demande.service";
+import { DemandeResponse } from "@/types/demande";
 const AL_OMRANE_GREEN = "#1D6F42";
 
 interface ActivityItem {

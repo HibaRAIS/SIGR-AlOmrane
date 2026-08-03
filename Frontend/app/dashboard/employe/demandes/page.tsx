@@ -35,6 +35,7 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import Link from "next/link";
+import { getImageUrl } from "@/lib/utils";   // ← AJOUT pour résoudre les images
 
 const urgencyLevels = [
   { id: "normal", name: "Normal", description: "Traitement standard (5-7 jours)", value: "NORMAL" },
@@ -176,7 +177,7 @@ export default function DemandesPage() {
                         <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/50 flex items-center justify-center">
                           {item.imageUrl ? (
                             <img
-                              src={item.imageUrl}
+                              src={getImageUrl(item.imageUrl)}
                               alt={item.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {
