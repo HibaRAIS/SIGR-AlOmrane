@@ -1,35 +1,7 @@
 // services/ticket.service.ts
 import apiClient from '@/lib/api';
+import { CreerTicketRequest, TicketResponse, PageResponse } from "@/types/ticket";
 
-export interface CreerTicketRequest {
-  categorie: string;
-  sujet: string;
-  description: string;
-  priorite?: string; // BASSE, NORMALE, HAUTE, CRITIQUE
-}
-
-export interface TicketResponse {
-  id: number;
-  sujet: string;
-  description: string;
-  priorite: string;
-  statut: string;
-  categorie: string;
-  dateCreation: string;
-  reponse: string | null;
-  dateReponse: string | null;
-  utilisateurNom?: string;
-  utilisateurEmail?: string;     
-  utilisateurTelephone?: string; 
-}
-
-export interface PageResponse<T> {
-  content: T[];
-  totalElements: number;
-  totalPages: number;
-  size: number;
-  number: number;
-}
 
 export const ticketService = {
   // Employé

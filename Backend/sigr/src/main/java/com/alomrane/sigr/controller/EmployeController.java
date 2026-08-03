@@ -1,87 +1,85 @@
 // controller/EmployeController.java
 package com.alomrane.sigr.controller;
 
-import com.alomrane.sigr.dto.request.ProfilUpdateRequest;
-import com.alomrane.sigr.dto.response.ProfilResponse;
-import com.alomrane.sigr.exception.BusinessException;
-import com.alomrane.sigr.exception.ResourceNotFoundException;
+import com.alomrane.sigr.dto.request.CreateEmployeRequest;
+import com.alomrane.sigr.dto.response.EmployeDto;
+import com.alomrane.sigr.dto.response.EmployeFlatDto;
 import com.alomrane.sigr.model.Employe;
-import com.alomrane.sigr.model.Utilisateur;
 import com.alomrane.sigr.repository.EmployeRepository;
-import com.alomrane.sigr.repository.UtilisateurRepository;
+import com.alomrane.sigr.service.EmployeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import java.time.format.DateTimeFormatter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/employes")
 @RequiredArgsConstructor
 public class EmployeController {
 
-    private final UtilisateurRepository utilisateurRepository;
+    private final EmployeService employeService;
     private final EmployeRepository employeRepository;
 
-    // Récupérer le profil de l'utilisateur connecté
-    @GetMapping("/profil")
-    public ResponseEntity<ProfilResponse> getProfil(@AuthenticationPrincipal Utilisateur user) {
-        Utilisateur managedUser = utilisateurRepository.findById(user.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur introuvable"));
-
-        Employe employe = managedUser.getEmploye();
-        if (employe == null) {
-            throw new BusinessException("Aucun employé associé");
-        }
-
-        String service = (employe.getStructure() != null) ? employe.getStructure().getNom() : "Non défini";
-        String site = (employe.getStructure() != null && employe.getStructure().getSite() != null)
-                ? employe.getStructure().getSite()
-                : "Non défini";
-        String responsable = (employe.getManager() != null)
-                ? employe.getManager().getPrenom() + " " + employe.getManager().getNom()
-                : "Aucun";
-        String derniereConnexion = (managedUser.getDerniereConnexion() != null)
-                ? managedUser.getDerniereConnexion().format(DateTimeFormatter.ofPattern("dd MMMM yyyy 'à' HH:mm"))
-                : "Non disponible";
-
-        ProfilResponse response = ProfilResponse.builder()
-                .prenom(employe.getPrenom())
-                .nom(employe.getNom())
-                .email(employe.getEmailProfessionnel())
-                .telephone(employe.getTelephone() != null ? employe.getTelephone() : "")
-                .service(service)
-                .site(site)
-                .matricule(employe.getMatricule())
-                .responsable(responsable)
-                .niveauAcces(managedUser.getRole().name())
-                .badge(employe.getBadge() != null ? employe.getBadge() : "")
-                .derniereConnexion(derniereConnexion)
-                .build();
-
-        return ResponseEntity.ok(response);
+    // ---------- Endpoint existant pour la page Organisation ----------
+    @GetMapping("/flat")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<EmployeFlatDto>> getAllFlat() {
+        List<EmployeFlatDto> list = employeRepository.findAll()
+                .stream()
+                .map(this::toFlatDto)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(list);
     }
 
-    // Mettre à jour le téléphone (seul champ modifiable)
-    @PutMapping("/profil/telephone")
-    public ResponseEntity<Void> updateTelephone(@AuthenticationPrincipal Utilisateur user,
-                                                @RequestBody ProfilUpdateRequest request) {
-        Utilisateur managedUser = utilisateurRepository.findById(user.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur introuvable"));
+    // ---------- Nouveaux endpoints pour la page Employés ----------
+    @GetMapping
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<EmployeDto>> getAll() {
+        return ResponseEntity.ok(employeService.getAll());
+    }
 
-        Employe employe = managedUser.getEmploye();
-        if (employe == null) {
-            throw new BusinessException("Aucun employé associé");
-        }
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN_SI')")
+    public ResponseEntity<EmployeDto> create(@Valid @RequestBody CreateEmployeRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeService.create(request));
+    }
 
-        String telephone = request.getTelephone();
-        if (telephone != null && !telephone.isBlank()) {
-            if (!telephone.matches("^(\\+212|0)[5-7][0-9]{8}$")) {
-                throw new BusinessException("Numéro invalide. Format attendu : +2126XXXXXXXX ou 06XXXXXXXX");
-            }
-            employe.setTelephone(telephone);
-            employeRepository.save(employe);
-        }
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN_SI')")
+    public ResponseEntity<EmployeDto> update(@PathVariable Long id,
+                                             @Valid @RequestBody CreateEmployeRequest request) {
+        return ResponseEntity.ok(employeService.update(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN_SI')")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        employeService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}/status")
+    @PreAuthorize("hasAnyRole('ADMIN_SI')")
+    public ResponseEntity<Void> updateStatus(@PathVariable Long id, @RequestParam boolean actif) {
+        employeService.updateStatus(id, actif);
         return ResponseEntity.ok().build();
+    }
+
+    // Méthode utilitaire conservée pour le /flat
+    private EmployeFlatDto toFlatDto(Employe emp) {
+        return new EmployeFlatDto(
+                emp.getId(),
+                emp.getNom(),
+                emp.getPrenom(),
+                emp.getEmailProfessionnel(),
+                emp.getTelephone(),
+                emp.getGrade().name(),
+                emp.getStructure() != null ? emp.getStructure().getId() : null
+        );
     }
 }

@@ -1,8 +1,10 @@
 'use client';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import {
   LayoutDashboard,
@@ -22,7 +24,6 @@ import {
   Bell,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
-import { useEffect } from 'react';
 import { demandeService } from '@/services/demande.service';
 import { LogoutConfirmDialog } from './LogoutConfirmDialog';
 
@@ -45,7 +46,11 @@ const chefNav = [
   { name: 'Notifications', href: '/dashboard/chef/notifications', icon: Bell },
 ];
 
-export default function SidebarChef() {
+interface SidebarChefProps {
+  className?: string;
+}
+
+export default function SidebarChef({ className }: SidebarChefProps) {
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const router = useRouter();
@@ -83,15 +88,27 @@ export default function SidebarChef() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-50 w-72 bg-[#1D6F42] text-white flex flex-col shadow-xl">
-        <div className="p-6 border-b border-white/10">
-          <h1 className="text-xl font-bold">AL OMRANE</h1>
-          <p className="text-sm text-white/70">SIGR - Chef de service</p>
+      <aside className={cn("fixed inset-y-0 left-0 z-50 w-72 bg-[#1D6F42] text-white flex flex-col shadow-xl", className)}>
+        {/* En-tête avec logo */}
+        <div className="p-6 border-b border-white/10 flex items-center gap-3">
+          <div className="relative h-10 w-10 bg-white rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src="/images/alomrane-logo.png"
+              alt="Al Omrane Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold">AL OMRANE</h1>
+            <p className="text-sm text-white/70">SIGR - Chef de service</p>
+          </div>
         </div>
 
-        {/* Navigation avec scrollbar masquée */}
-        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-4 scrollbar-hidden">
-          {/* Espace Personnel (replié par défaut) */}
+        {/* Navigation avec scrollbar invisible */}
+        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-4 custom-scrollbar">
+          {/* Espace Personnel */}
           <div>
             <button
               onClick={() => setIsPersonalOpen(!isPersonalOpen)}
@@ -124,7 +141,7 @@ export default function SidebarChef() {
             )}
           </div>
 
-          {/* Validation & Workflow (ouvert par défaut) */}
+          {/* Validation & Workflow */}
           <div>
             <button
               onClick={() => setIsWorkflowOpen(!isWorkflowOpen)}
@@ -163,7 +180,7 @@ export default function SidebarChef() {
           </div>
         </nav>
 
-        {/* Zone utilisateur (en bas) */}
+        {/* Zone utilisateur */}
         <div className="p-4 border-t border-white/10 space-y-3">
           <div className="flex items-center gap-3 px-2 py-2 rounded-lg bg-white/5">
             <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-white">
@@ -183,6 +200,17 @@ export default function SidebarChef() {
           </button>
         </div>
       </aside>
+
+      <style jsx global>{`
+        .custom-scrollbar {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE/Edge */
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          display: none; /* Chrome/Safari/Opera */
+        }
+      `}</style>
+
       <LogoutConfirmDialog
         open={dialogOpen}
         onOpenChange={setDialogOpen}

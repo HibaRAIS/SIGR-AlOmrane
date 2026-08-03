@@ -18,9 +18,11 @@ public class LigneMouvement {
     private Long id;
 
     private BigDecimal quantite;
+    private BigDecimal stockAvant;
     private BigDecimal stockApres;
     private BigDecimal pmpSnapshot;
     private BigDecimal valeurFlux;
+    private String motif;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "journal_id")

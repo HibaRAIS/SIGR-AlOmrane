@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'sonner'; // ← ajouter cet import
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -17,7 +18,7 @@ apiClient.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Intercepteur de réponse : gère les erreurs 401
+// Intercepteur de réponse : gère les erreurs 401 et affiche les autres
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -25,6 +26,12 @@ apiClient.interceptors.response.use(
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
+    } else {
+      const message =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        error.message;
+      toast.error(`Erreur ${error.response?.status || ''}: ${message}`);
     }
     return Promise.reject(error);
   }

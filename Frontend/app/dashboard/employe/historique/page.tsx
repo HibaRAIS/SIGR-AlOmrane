@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { demandeService, DemandeResponse } from "@/services/demande.service";
-import { produitService, Produit } from "@/services/produit.service";
+import { demandeService} from "@/services/demande.service";
+import { DemandeResponse } from "@/types/demande";
+import { produitService } from "@/services/produit.service";
+import { Produit } from "@/types/produit";
 import { categorieService } from "@/services/categorie.service";
 import { buildCategoryHierarchy, getRootCategories, getSubCategories, CategoryInfo } from "@/lib/categoryHelpers";
 
@@ -49,6 +51,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { getImageUrl } from "@/lib/utils";
 
 interface ConsumptionItem {
   id: string;
@@ -770,7 +773,11 @@ export default function HistoriquePage() {
                         <td className="py-4 px-4">
                           <div className="flex items-center gap-3">
                             {item.imageUrl ? (
-                              <img src={item.imageUrl} alt={item.name} className="w-10 h-10 rounded-lg object-cover print:border print:border-gray-300" />
+                              <img
+                                src={getImageUrl(item.imageUrl)}
+                                alt={item.name}
+                                className="w-10 h-10 rounded-lg object-cover print:border print:border-gray-300"
+                              />
                             ) : (
                               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                                 <Package className="w-5 h-5 text-primary" />

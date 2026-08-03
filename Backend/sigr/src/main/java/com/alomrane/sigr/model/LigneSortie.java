@@ -26,4 +26,6 @@ public class LigneSortie {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produit_id")
     private Produit produit;
+
+    private String observation;
 }

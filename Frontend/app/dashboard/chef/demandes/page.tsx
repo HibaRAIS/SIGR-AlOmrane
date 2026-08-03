@@ -12,7 +12,8 @@ import {
 import { useSearchParams } from "next/navigation"; 
 import { toast } from 'sonner';
 import { cn } from "@/lib/utils";
-import { demandeService, DemandeResponse, LigneResponse } from "@/services/demande.service" // adapter le chemin
+import { demandeService } from "@/services/demande.service";// adapter le chemin
+import { DemandeResponse, LigneResponse } from "@/types/demande";
 
 // ════════════════════════════════════════════════════════════════════════════
 // TYPES – Adaptation des types backend vers l’UI

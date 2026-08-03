@@ -25,6 +25,7 @@ export default function Header() {
           <h2 className="text-lg font-semibold">Bonjour, {user?.nom || 'Utilisateur'}</h2>
           <p className="text-sm text-gray-500">Bienvenue sur SIGR</p>
         </div>
+        
         <div className="flex items-center gap-4">
           <NotificationsPopover /> {/* ← remplace le Button avec Bell */}
           <Button variant="outline" onClick={() => setDialogOpen(true)}>

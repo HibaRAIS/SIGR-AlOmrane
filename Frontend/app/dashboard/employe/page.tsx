@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { demandeService, DemandeResponse } from '@/services/demande.service';
+import { demandeService } from '@/services/demande.service';
+import { DemandeResponse } from "@/types/demande";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';

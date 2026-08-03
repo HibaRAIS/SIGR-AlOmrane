@@ -47,7 +47,10 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { demandeService } from "@/services/demande.service";
-import { produitService, Produit } from "@/services/produit.service";
+import { sortieService } from "@/services/sortie.service";
+import { produitService } from "@/services/produit.service";
+import { Produit } from "@/types/produit";
+import { DemandeDetailResponse, LigneDetailResponse } from "@/types/sortie";
 
 // Configuration des statuts
 const statusConfig: Record<string, any> = {
@@ -118,6 +121,10 @@ export default function SuiviPage() {
     p.codeArticle.toLowerCase().includes(productSearch.toLowerCase())
   );
   const [showProductList, setShowProductList] = useState(false);
+
+  // États pour le dialogue détail enrichi
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [enrichedLines, setEnrichedLines] = useState<LigneDetailResponse[] | null>(null);
 
   // Chargement des produits
   useEffect(() => {
@@ -227,6 +234,24 @@ export default function SuiviPage() {
     setNewItemQuantity(1);
     setProductSearch("");
     setEditDialogOpen(true);
+  };
+
+  // Ouvre le dialogue détail et charge les quantités servies si nécessaire
+  const openDetail = async (demande: Demande) => {
+    setSelectedDemande(demande);
+    setDetailsOpen(true);
+    setDetailLoading(true);
+    setEnrichedLines(null);
+
+    if (demande.statut === 'EN_PREPARATION' || demande.statut === 'LIVREE') {
+      try {
+        const detail: DemandeDetailResponse = await sortieService.getDemandeDetail(demande.id);
+        setEnrichedLines(detail.lignes);
+      } catch (error) {
+        console.error("Impossible de charger les quantités servies", error);
+      }
+    }
+    setDetailLoading(false);
   };
 
   const updateItemQuantity = (index: number, delta: number) => {
@@ -341,7 +366,6 @@ export default function SuiviPage() {
       {/* Filtres */}
       <Card className="border-0 shadow-sm">
         <CardContent className="p-4">
-          {/* Ligne 1 : recherche et bouton reset */}
           <div className="flex flex-col md:flex-row gap-4 mb-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -357,7 +381,6 @@ export default function SuiviPage() {
               Réinitialiser
             </Button>
           </div>
-          {/* Ligne 2 : statut, urgence, période */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-full sm:w-44 h-11">
@@ -397,7 +420,6 @@ export default function SuiviPage() {
               </SelectContent>
             </Select>
           </div>
-          {/* Ligne 3 : dates personnalisées */}
           {dateFilter === "custom" && (
             <div className="flex flex-col sm:flex-row gap-3 mt-4 pt-4 border-t">
               <div className="flex-1">
@@ -442,7 +464,6 @@ export default function SuiviPage() {
                           <span className="flex items-center gap-1"><Package className="w-4 h-4" />{d.lignes.length} article(s)</span>
                           {d.validePar && d.validePar !== "Non encore validée" && <span className="flex items-center gap-1"><User className="w-4 h-4" />{d.validePar}</span>}
                         </div>
-                        {/* Quantités demandées / accordées */}
                         <div className="flex flex-wrap gap-2 mt-2">
                           {d.lignes.slice(0, 3).map(l => (
                             <div key={l.ligneId} className="inline-flex items-center gap-1 text-xs bg-gray-50 rounded-full px-2 py-0.5 border">
@@ -460,7 +481,9 @@ export default function SuiviPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 lg:ml-4">
-                      <Button variant="outline" size="sm" onClick={() => { setSelectedDemande(d); setDetailsOpen(true); }}><Eye className="w-4 h-4 mr-2" />Détails</Button>
+                      <Button variant="outline" size="sm" onClick={() => openDetail(d)}>
+                        <Eye className="w-4 h-4 mr-2" />Détails
+                      </Button>
                       {isPending && (
                         <>
                           <Button variant="outline" size="sm" onClick={() => handleEdit(d)}><Edit className="w-4 h-4 mr-2" />Modifier</Button>
@@ -476,10 +499,25 @@ export default function SuiviPage() {
         )}
       </div>
 
-      {/* Dialogue Détails */}
-      <Dialog open={detailsOpen} onOpenChange={setDetailsOpen}>
+      {/* Dialogue Détails (avec quantités servies si disponibles) */}
+      <Dialog open={detailsOpen} onOpenChange={(open) => {
+        setDetailsOpen(open);
+        if (!open) {
+          setDetailLoading(false);
+          setEnrichedLines(null);
+        }
+      }}>
         <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
-          {selectedDemande && (
+          {detailLoading ? (
+            <>
+              <DialogHeader>
+                <DialogTitle>Chargement des détails...</DialogTitle>
+              </DialogHeader>
+              <div className="flex justify-center py-10">
+                <Loader2 className="animate-spin w-8 h-8 text-[#1D6F42]" />
+              </div>
+            </>
+          ) : selectedDemande ? (
             <>
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2 flex-wrap">
@@ -494,24 +532,43 @@ export default function SuiviPage() {
                 <div>
                   <h4 className="text-sm font-medium mb-2">Articles</h4>
                   <div className="space-y-2">
-                    {selectedDemande.lignes.map((l) => (
-                      <div key={l.ligneId} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                        <div className="flex-1">
-                          <p className="text-sm font-medium">{l.produitDesignation}</p>
-                          <p className="text-xs text-muted-foreground">Réf: {l.produitReference}</p>
+                    {selectedDemande.lignes.map((l) => {
+                      const enriched = enrichedLines?.find(el => el.ligneId === l.ligneId);
+                      const showServie = (selectedDemande.statut === 'EN_PREPARATION' || selectedDemande.statut === 'LIVREE') && enriched?.quantiteServie !== undefined;
+                      return (
+                        <div key={l.ligneId} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                          <div className="flex-1">
+                            <p className="text-sm font-medium">{l.produitDesignation}</p>
+                            <p className="text-xs text-muted-foreground">Réf: {l.produitReference}</p>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="text-right">
+                              <p className="text-xs text-muted-foreground">Demandée</p>
+                              <p className="text-sm font-medium">{l.quantiteDemandee}</p>
+                            </div>
+                            <div className="w-px h-8 bg-gray-200" />
+                            <div className="text-right">
+                              <p className="text-xs text-[#1D6F42]">Accordée</p>
+                              <p className={`text-sm font-bold ${l.quantiteAccordee !== l.quantiteDemandee ? "text-[#1D6F42]" : "text-gray-600"}`}>{l.quantiteAccordee}</p>
+                            </div>
+                            {showServie && (
+                              <>
+                                <div className="w-px h-8 bg-gray-200" />
+                                <div className="text-right">
+                                  <p className="text-xs text-blue-600">Servie</p>
+                                  <p className="text-sm font-bold text-blue-600">{enriched!.quantiteServie}</p>
+                                </div>
+                              </>
+                            )}
+                          </div>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <div className="text-right"><p className="text-xs text-muted-foreground">Demandée</p><p className="text-sm font-medium">{l.quantiteDemandee}</p></div>
-                          <div className="w-px h-8 bg-gray-200" />
-                          <div className="text-right"><p className="text-xs text-[#1D6F42]">Accordée</p><p className={`text-sm font-bold ${l.quantiteAccordee !== l.quantiteDemandee ? "text-[#1D6F42]" : "text-gray-600"}`}>{l.quantiteAccordee}</p></div>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
                 {selectedDemande.validePar && selectedDemande.validePar !== "Non encore validée" && (
                   <div className="border-t pt-4">
-                    <h4 className="text-sm font-medium mb-2">Validé par</h4>
+                    <h4 className="text-sm font-medium mb-2">Traitée par</h4>
                     <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
                       <User className="w-5 h-5 text-muted-foreground" />
                       <div><p className="text-sm font-medium">{selectedDemande.validePar}</p>{selectedDemande.dateValidation && <p className="text-xs text-muted-foreground">{new Date(selectedDemande.dateValidation).toLocaleDateString("fr-FR")}</p>}</div>
@@ -529,6 +586,11 @@ export default function SuiviPage() {
               </div>
               <DialogFooter><Button variant="outline" onClick={() => setDetailsOpen(false)}>Fermer</Button></DialogFooter>
             </>
+          ) : (
+            <DialogHeader>
+              <DialogTitle>Aucune demande sélectionnée</DialogTitle>
+              <DialogDescription>Veuillez réessayer.</DialogDescription>
+            </DialogHeader>
           )}
         </DialogContent>
       </Dialog>

@@ -10,7 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { demandeService, DemandeResponse, LigneResponse } from "@/services/demande.service";
+import { demandeService } from "@/services/demande.service";
+import { DemandeResponse, LigneResponse } from "@/types/demande";
 
 type PrioriteBackend = "NORMAL" | "URGENT" | "CRITIQUE";
 type StatutBackend = "EN_VALIDATION" | "VALIDEE" | "REFUSEE" | "EN_PREPARATION" | "LIVREE";

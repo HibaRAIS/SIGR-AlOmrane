@@ -1,17 +1,6 @@
 // 3. Frontend – services/auth.service.ts
 import apiClient from '@/lib/api';
-
-export interface LoginCredentials {
-  email: string;
-  password: string;
-}
-
-export interface AuthResponse {
-  token: string;
-  role: string;
-  nom: string;
-  loginLdap: string;  
-}
+import { LoginCredentials, AuthResponse } from '@/types/auth';
 
 export const authService = {
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {

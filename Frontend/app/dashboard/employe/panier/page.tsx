@@ -9,7 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { Package, Trash2, Minus, Plus, ArrowRight, ShoppingCart, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
-import { categorieService, CategorieArborescence } from "@/services/categorie.service";
+import { categorieService } from "@/services/categorie.service";
+import { CategorieArborescence } from "@/types/categorie";
+import { getImageUrl } from "@/lib/utils";   // ← AJOUT pour résoudre les images
 
 // ============================================================
 //         RÉCUPÉRATION DES CATÉGORIES POUR L'AFFICHAGE
@@ -93,7 +95,7 @@ export default function PanierPage() {
                       <div className="w-20 h-20 bg-gradient-to-br from-muted to-muted/50 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
                         {item.imageUrl ? (
                           <img
-                            src={item.imageUrl}
+                            src={getImageUrl(item.imageUrl)}
                             alt={item.name}
                             className="w-full h-full object-cover"
                             onError={(e) => {

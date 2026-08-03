@@ -34,6 +34,12 @@ public class BonSortie {
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
 
+    @Lob
+    private String observations;
+
+    @Lob
+    private String signaturesJson;
+
     @OneToMany(mappedBy = "bonSortie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     @ToString.Exclude

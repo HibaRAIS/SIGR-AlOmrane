@@ -54,7 +54,8 @@ import {
   Tag,
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { ticketService, TicketResponse } from '@/services/ticket.service';
+import { ticketService } from '@/services/ticket.service';
+import { TicketResponse } from '@/types/ticket';
 
 // Couleurs pour les priorités
 const priorityColors: Record<string, string> = {
